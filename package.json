@@ -1,0 +1,36 @@
+{
+  "name": "nm-react",
+  "version": "1.0.0",
+  "description": "Learning React",
+  "keywords": [
+    "react",
+    "Namaste",
+    "React"
+  ],
+  "homepage": "https://github.com/mk-Guvi/React-NM#readme",
+  "bugs": {
+    "url": "https://github.com/mk-Guvi/React-NM/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mk-Guvi/React-NM.git"
+  },
+  "license": "ISC",
+  "author": "musharaf",
+  "type": "commonjs",
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "parcel": "^2.13.3",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
+  },
+  "main": "app.js",
+  "browserslist": [
+    "last 2 versions"
+  ]
+}

@@ -1,3 +1,5 @@
+import React from "react";
+import ReactDOM from "react-dom/client";
 // const heading = React.createElement(
 //   "h1",
 //   {
@@ -5,6 +7,8 @@
 //   },
 //   "Hello world from react!"
 // );
+
+
 const divConstructor = React.createElement(
   "div",
   { id: "parent" },
@@ -13,5 +17,6 @@ const divConstructor = React.createElement(
     React.createElement("div", { id: "child-2" }, "Hello div 2"),
   ])
 );
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(divConstructor);
