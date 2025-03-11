@@ -59,3 +59,25 @@ Package-lock.json is used by the package manager to ensure that the correct vers
 
 npx executes a package 
 
+JSX is not HTML in JS. It is HTML or XML like syntax. JSX and React Elements are same. JSX is transpiled to browser understandable code by parcel. parcel uses Babel to transpile JSX. JSX is transpiled to React.createElement which is then converted to DOM elements . This is done by babel. JSX attributes should be in camelCase. JSX sanitizes the code which can prevent XSS attacks.
+
+Component Composition - It is the process of creating new components by combining existing components.
+
+
+keys are used to identify the elements in the virtual DOM. If the key is not provided, it can cause performance issues by re-rendering all the elements.
+
+Config Driven UI - It is the process of creating UI based on the configuration. 
+
+### Hooks
+
+Whenever a state changes, the component is re-rendered. which is triggered by the setState() method.
+
+React uses Reconciliation algorithm (also called as React Fiber) to update the DOM. This is the process of comparing the virtual DOM with the actual DOM and updating the actual DOM.
+
+Virtual DOM - It is a lightweight representation of the actual DOM. Which is nothing but just the React Elements(JS Object).
+
+### useEffect
+
+useEffect accepts two arguments. First is a callback function and second is an array of dependencies. The callback function is called after the render is completed.
+
+SHIMMER UI - It is the process of showing a skeleton of the UI before the actual data is loaded.
