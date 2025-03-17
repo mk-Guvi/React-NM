@@ -1,83 +1,154 @@
-## Shortcuts In VsCode
+# VSCode Shortcuts
 
-html:5 - creates html boiler plate
+- `html:5` - Generates an HTML boilerplate.
 
+---
 
-## Commands
+# Commands
 
-npx parcel index.html 
-npx parcel build index.html -- To create Production build . You need remove the main : app.js from package.json as parcel uses index.html as entry point.    
+- **Development Server:**
+  ```sh
+  npx parcel index.html
+  ```
+- **Production Build:**
+  ```sh
+  npx parcel build index.html
+  ```
+  > Ensure `main: app.js` is removed from `package.json`, as Parcel uses `index.html` as the entry point.
 
-## Parcel
+---
 
-- Creates Dev Build
-- Creates Prod Build
-- Creates Dev Server
-- Create HMR - Hot Module Replacement
-- It uses File Watching Algorithm built in C++ to perform HMR where on saving file it will re-render the application without refreshing the page.
-- It also Caches the files and the dependencies for faster builds.
-- It also does Image Optimization.
-- It does Minification of JS and CSS.
-- It Bundles the code.
-- It can Compress the files.
-- Consistent Hashing.
-- Code Splitting.
-- Differential Bundling to support older browsers.
-- Dignostics and Errors in the browser.
-- it allows you host in https also.
-- Tree Shaking. Removes unused code.
-- ```json
-{
-  "browserslist": [
-    "last 2 versions"
-  ]
-}
-- ```
-- adding browserlist will help in building the code for older versions of the browser too. 
+# Parcel Bundler
 
-### REACT
+Parcel is a powerful zero-config bundler with the following features:
 
+- **Development & Production Builds**
+  - Parcel automatically creates optimized development and production builds.
+- **Built-in Dev Server**
+  - Runs a local server for easy development and live reloading.
+- **Hot Module Replacement (HMR)**
+  - Uses a file-watching algorithm written in C++ to detect changes and update modules without refreshing the page.
+- **Intelligent Caching**
+  - Caches files and dependencies to significantly speed up subsequent builds.
+- **Image Optimization**
+  - Automatically compresses and optimizes images for better performance.
+- **JS & CSS Minification**
+  - Reduces the file size of JavaScript and CSS to enhance load speed.
+- **Code Bundling & Compression**
+  - Groups related files together and compresses them for efficient loading.
+- **Consistent Hashing**
+  - Ensures file versions are correctly identified and cached by browsers.
+- **Code Splitting**
+  - Automatically splits large codebases into smaller chunks to improve loading times.
+- **Differential Bundling**
+  - Generates multiple versions of the build to support both modern and older browsers.
+- **Diagnostics & Error Reporting in Browser**
+  - Displays errors directly in the browser for easier debugging.
+- **HTTPS Support**
+  - Allows local hosting using HTTPS for secure development.
+- **Tree Shaking**
+  - Eliminates unused code from the final build to optimize performance.
+- **Browser Compatibility Settings**
+  - Uses `browserslist` in `package.json` to define browser support:
+  ```json
+  {
+    "browserslist": [
+      "last 2 versions"
+    ]
+  }
+  ```
+  - This ensures compatibility with the last two major versions of all browsers.
+
+---
+
+# React Basics
+
+### Creating a React Element
 ```javascript
 
 // This creates the React Element which is just an JS object.
-React.createElement('element-tag', attributes, value | React.createElement[]);
+React.createElement('tag', attributes, value | React.createElement[]);
+```
+
+### Rendering Elements
+```javascript
 
 // Targeting where React should render its elements
-ReactDOM.createRoot(document.getElementById('root'));
-
 // Render the elements in the root element, replacing any existing elements. This transforms the React Element into DOM Elements.
-root.render();
+ReactDOM.createRoot(document.getElementById('root')).render();
+```
 
-^ - minor updates will be applied to package
-~ -  major updates will be applied to package
+### Package Versioning
+- `^` - Allows minor updates.
+- `~` - Allows only patch updates.
 
-Transitive dependencies are the dependencies of the dependencies.
+### Dependency Management
+- **Transitive Dependencies** - Dependencies of dependencies.
+- **package.json** - Manifest file for the project.
+- **package-lock.json** - Ensures consistent dependency versions.
+- **npx** - Executes packages without global installation.
 
-Package.json is the manifest file for our application.
-Package-lock.json is used by the package manager to ensure that the correct version of each dependency is installed.
+### JSX
+- JSX is **not** HTML in JS, but an HTML/XML-like syntax.
+- JSX is transpiled by Babel into `React.createElement` which is then converted to DOM elements.
+- JSX attributes use **camelCase**.
+- JSX **sanitizes** code, preventing XSS attacks.
 
+### Component Composition
+- The practice of creating new components by combining existing ones.
 
-npx executes a package 
+### Keys in React
+- Used to uniquely identify elements in the virtual DOM.
+- Prevents unnecessary re-renders and improves performance.
+- If the key is not provided, it can cause performance issues by re-rendering all the elements
 
-JSX is not HTML in JS. It is HTML or XML like syntax. JSX and React Elements are same. JSX is transpiled to browser understandable code by parcel. parcel uses Babel to transpile JSX. JSX is transpiled to React.createElement which is then converted to DOM elements . This is done by babel. JSX attributes should be in camelCase. JSX sanitizes the code which can prevent XSS attacks.
+### Config-Driven UI
+- UI built dynamically based on configurations.
 
-Component Composition - It is the process of creating new components by combining existing components.
+---
 
+# React Hooks
 
-keys are used to identify the elements in the virtual DOM. If the key is not provided, it can cause performance issues by re-rendering all the elements.
+### useState & Re-Renders
+- State updates trigger re-renders via `setState()`.
+- React uses **Reconciliation Algorithm (React Fiber)** to efficiently update the DOM.
 
-Config Driven UI - It is the process of creating UI based on the configuration. 
-
-### Hooks
-
-Whenever a state changes, the component is re-rendered. which is triggered by the setState() method.
-
-React uses Reconciliation algorithm (also called as React Fiber) to update the DOM. This is the process of comparing the virtual DOM with the actual DOM and updating the actual DOM.
-
-Virtual DOM - It is a lightweight representation of the actual DOM. Which is nothing but just the React Elements(JS Object).
+### Virtual DOM
+- A lightweight JS object representation of the actual DOM  Which is nothing but just the React Elements(JS Object).
+- Uses **Diff Algorithm** to update only necessary parts of the real DOM.
 
 ### useEffect
+```javascript
+useEffect(() => {
+  // Side effect logic
+}, [dependencies]);
+```
+- Runs after the component renders.
+- **No dependency array** → Runs on every render.
+- **Empty array `[]`** → Runs only once.
+- **Dependencies provided** → Runs when dependencies change.
 
-useEffect accepts two arguments. First is a callback function and second is an array of dependencies. The callback function is called after the render is completed.
+### Shimmer UI
+- Displays a skeleton UI before actual data loads.
 
-SHIMMER UI - It is the process of showing a skeleton of the UI before the actual data is loaded.
+---
+
+# React Router DOM
+
+### Core Functions & Components
+- `createBrowserRouter`
+- `Outlet` for nested routes
+- `useRouteError`
+- `errorElement`
+- `ReactRouteProvider`
+- `useParams`
+
+### Routing Types
+- **Client-Side Routing**
+- **Server-Side Routing**
+
+---
+
+# Tools
+- **[CrossProxy.io](https://crossproxy.io)** - Resolves CORS errors.
+
